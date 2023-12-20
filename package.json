@@ -1,6 +1,6 @@
 {
   "name": "@stdlib/ndarray-slice-from",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Return a read-only shifted view of an input ndarray.",
   "license": "Apache-2.0",
   "author": {
@@ -53,7 +53,6 @@
   "devDependencies": {
     "@stdlib/array-base-zero-to": "^0.1.0",
     "@stdlib/array-typed": "^0.1.0",
-    "@stdlib/bench": "^0.2.1",
     "@stdlib/ndarray-array": "^0.1.0",
     "@stdlib/ndarray-base-assert-is-read-only": "^0.1.1",
     "@stdlib/ndarray-base-ctor": "^0.1.0",
@@ -66,7 +65,8 @@
     "@stdlib/ndarray-zeros": "^0.1.0",
     "tape": "git+https://github.com/kgryte/tape.git#fix/globby",
     "istanbul": "^0.4.1",
-    "tap-min": "git+https://github.com/Planeshifter/tap-min.git"
+    "tap-min": "git+https://github.com/Planeshifter/tap-min.git",
+    "@stdlib/bench-harness": "^0.1.2"
   },
   "engines": {
     "node": ">=0.10.0",
