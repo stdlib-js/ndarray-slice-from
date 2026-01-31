@@ -53,7 +53,7 @@
   },
   "devDependencies": {
     "@stdlib/array-base-zero-to": "^0.2.1",
-    "@stdlib/array-typed": "^0.3.0",
+    "@stdlib/array-typed": "^0.3.1",
     "@stdlib/ndarray-array": "^0.2.1",
     "@stdlib/ndarray-base-assert-is-read-only": "^0.2.2",
     "@stdlib/ndarray-base-ctor": "^0.2.2",
