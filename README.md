@@ -45,14 +45,32 @@ limitations under the License.
 
 <!-- Package usage documentation. -->
 
+<section class="installation">
 
+## Installation
+
+```bash
+npm install @stdlib/ndarray-slice-from
+```
+
+Alternatively,
+
+-   To load the package in a website via a `script` tag without installation and bundlers, use the [ES Module][es-module] available on the [`esm`][esm-url] branch (see [README][esm-readme]).
+-   If you are using Deno, visit the [`deno`][deno-url] branch (see [README][deno-readme] for usage intructions).
+-   For use in Observable, or in browser/node environments, use the [Universal Module Definition (UMD)][umd] build available on the [`umd`][umd-url] branch (see [README][umd-readme]).
+
+The [branches.md][branches-url] file summarizes the available branches and displays a diagram illustrating their relationships.
+
+To view installation and usage instructions specific to each branch build, be sure to explicitly navigate to the respective README files on each branch, as linked to above.
+
+</section>
 
 <section class="usage">
 
 ## Usage
 
 ```javascript
-import sliceFrom from 'https://cdn.jsdelivr.net/gh/stdlib-js/ndarray-slice-from@esm/index.mjs';
+var sliceFrom = require( '@stdlib/ndarray-slice-from' );
 ```
 
 #### sliceFrom( x, ...start\[, options] )
@@ -60,8 +78,7 @@ import sliceFrom from 'https://cdn.jsdelivr.net/gh/stdlib-js/ndarray-slice-from@
 Returns a **read-only** shifted view of an input [ndarray][@stdlib/ndarray/ctor].
 
 ```javascript
-import ndarray from 'https://cdn.jsdelivr.net/gh/stdlib-js/ndarray-ctor@esm/index.mjs';
-import ndarray2array from 'https://cdn.jsdelivr.net/gh/stdlib-js/ndarray-to-array@esm/index.mjs';
+var ndarray = require( '@stdlib/ndarray-ctor' );
 
 var buffer = [ 1.0, 2.0, 3.0, 4.0, 5.0, 6.0 ];
 var shape = [ 3, 2 ];
@@ -69,22 +86,16 @@ var strides = [ 2, 1 ];
 var offset = 0;
 
 var x = ndarray( 'generic', buffer, shape, strides, offset, 'row-major' );
-// returns <ndarray>
+// returns <ndarray>[ [ 1.0, 2.0 ], [ 3.0, 4.0 ], [ 5.0, 6.0 ] ]
 
 var sh = x.shape;
 // returns [ 3, 2 ]
 
-var arr = ndarray2array( x );
-// returns [ [ 1.0, 2.0 ], [ 3.0, 4.0 ], [ 5.0, 6.0 ] ]
-
 var y = sliceFrom( x, 1, null );
-// returns <ndarray>
+// returns <ndarray>[ [ 3.0, 4.0 ], [ 5.0, 6.0 ] ]
 
 sh = y.shape;
 // returns [ 2, 2 ]
-
-arr = ndarray2array( y );
-// returns [ [ 3.0, 4.0 ], [ 5.0, 6.0 ] ]
 ```
 
 The function accepts the following arguments:
@@ -101,8 +112,7 @@ The function supports two (mutually exclusive) means for providing index argumen
 The following example demonstrates each invocation style returning equivalent results.
 
 ```javascript
-import ndarray from 'https://cdn.jsdelivr.net/gh/stdlib-js/ndarray-ctor@esm/index.mjs';
-import ndarray2array from 'https://cdn.jsdelivr.net/gh/stdlib-js/ndarray-to-array@esm/index.mjs';
+var ndarray = require( '@stdlib/ndarray-ctor' );
 
 var buffer = [ 1.0, 2.0, 3.0, 4.0, 5.0, 6.0 ];
 var shape = [ 3, 2 ];
@@ -110,33 +120,24 @@ var strides = [ 2, 1 ];
 var offset = 0;
 
 var x = ndarray( 'generic', buffer, shape, strides, offset, 'row-major' );
-// returns <ndarray>
+// returns <ndarray>[ [ 1.0, 2.0 ], [ 3.0, 4.0 ], [ 5.0, 6.0 ] ]
 
 var sh = x.shape;
 // returns [ 3, 2 ]
 
-var arr = ndarray2array( x );
-// returns [ [ 1.0, 2.0 ], [ 3.0, 4.0 ], [ 5.0, 6.0 ] ]
-
 // 1. Using an array of index arguments:
 var y = sliceFrom( x, [ 1, null ] );
-// returns <ndarray>
+// returns <ndarray>[ [ 3.0, 4.0 ], [ 5.0, 6.0 ] ]
 
 sh = y.shape;
 // returns [ 2, 2 ]
-
-arr = ndarray2array( y );
-// returns [ [ 3.0, 4.0 ], [ 5.0, 6.0 ] ]
 
 // 2. Providing separate arguments:
 y = sliceFrom( x, 1, null );
-// returns <ndarray>
+// returns <ndarray>[ [ 3.0, 4.0 ], [ 5.0, 6.0 ] ]
 
 sh = y.shape;
 // returns [ 2, 2 ]
-
-arr = ndarray2array( y );
-// returns [ [ 3.0, 4.0 ], [ 5.0, 6.0 ] ]
 ```
 
 The function supports the following `options`:
@@ -146,8 +147,7 @@ The function supports the following `options`:
 By default, the function throws an error when provided an index argument which exceeds array bounds. To return an empty array when an index exceeds array bounds, set the `strict` option to `false`.
 
 ```javascript
-import ndarray from 'https://cdn.jsdelivr.net/gh/stdlib-js/ndarray-ctor@esm/index.mjs';
-import ndarray2array from 'https://cdn.jsdelivr.net/gh/stdlib-js/ndarray-to-array@esm/index.mjs';
+var ndarray = require( '@stdlib/ndarray-ctor' );
 
 var buffer = [ 1.0, 2.0, 3.0, 4.0, 5.0, 6.0 ];
 var shape = [ 3, 2 ];
@@ -155,13 +155,10 @@ var strides = [ 2, 1 ];
 var offset = 0;
 
 var x = ndarray( 'generic', buffer, shape, strides, offset, 'row-major' );
-// returns <ndarray>
+// returns <ndarray>[ [ 1.0, 2.0 ], [ 3.0, 4.0 ], [ 5.0, 6.0 ] ]
 
 var sh = x.shape;
 // returns [ 3, 2 ]
-
-var arr = ndarray2array( x );
-// returns [ [ 1.0, 2.0 ], [ 3.0, 4.0 ], [ 5.0, 6.0 ] ]
 
 var y = sliceFrom( x, null, 20, {
     'strict': false
@@ -170,9 +167,6 @@ var y = sliceFrom( x, null, 20, {
 
 sh = y.shape;
 // returns [ 3, 0 ]
-
-arr = ndarray2array( y );
-// returns []
 ```
 
 </section>
@@ -200,16 +194,10 @@ arr = ndarray2array( y );
 
 <!-- eslint no-undef: "error" -->
 
-```html
-<!DOCTYPE html>
-<html lang="en">
-<body>
-<script type="module">
-
-import array from 'https://cdn.jsdelivr.net/gh/stdlib-js/ndarray-array@esm/index.mjs';
-import ndarray2array from 'https://cdn.jsdelivr.net/gh/stdlib-js/ndarray-to-array@esm/index.mjs';
-import zeroTo from 'https://cdn.jsdelivr.net/gh/stdlib-js/array-base-zero-to@esm/index.mjs';
-import sliceFrom from 'https://cdn.jsdelivr.net/gh/stdlib-js/ndarray-slice-from@esm/index.mjs';
+```javascript
+var array = require( '@stdlib/ndarray-array' );
+var zeroTo = require( '@stdlib/array-base-zero-to' );
+var sliceFrom = require( '@stdlib/ndarray-slice-from' );
 
 // Create a linear ndarray buffer:
 var buf = zeroTo( 27 );
@@ -221,28 +209,15 @@ var x = array( buf, {
 
 // Get the last two rows of each matrix:
 var y1 = sliceFrom( x, null, 1, null );
-// returns <ndarray>
-
-var a1 = ndarray2array( y1 );
-// returns [ [ [ 3, 4, 5 ], [ 6, 7, 8 ] ], [ [ 12, 13, 14 ], [ 15, 16, 17 ] ], [ [ 21, 22, 23 ], [ 24, 25, 26 ] ] ]
+// returns <ndarray>[ [ [ 3, 4, 5 ], [ 6, 7, 8 ] ], [ [ 12, 13, 14 ], [ 15, 16, 17 ] ], [ [ 21, 22, 23 ], [ 24, 25, 26 ] ] ]
 
 // Get the last two rows and columns of each matrix:
 var y2 = sliceFrom( x, null, 1, 1 );
-// returns <ndarray>
-
-var a2 = ndarray2array( y2 );
-// returns [ [ [ 4, 5 ], [ 7, 8 ] ], [ [ 13, 14 ], [ 16, 17 ] ], [ [ 22, 23 ], [ 25, 26 ] ] ]
+// returns <ndarray>[ [ [ 4, 5 ], [ 7, 8 ] ], [ [ 13, 14 ], [ 16, 17 ] ], [ [ 22, 23 ], [ 25, 26 ] ] ]
 
 // Get the last two 2x2 matrices:
 var y3 = sliceFrom( x, 1, 1, 1 );
-// returns <ndarray>
-
-var a3 = ndarray2array( y3 );
-// returns [ [ [ 13, 14 ], [ 16, 17 ] ], [ [ 22, 23 ], [ 25, 26 ] ] ]
-
-</script>
-</body>
-</html>
+// returns <ndarray>[ [ [ 13, 14 ], [ 16, 17 ] ], [ [ 22, 23 ], [ 25, 26 ] ] ]
 ```
 
 </section>
@@ -284,7 +259,7 @@ var a3 = ndarray2array( y3 );
 
 ## Notice
 
-This package is part of [stdlib][stdlib], a standard library with an emphasis on numerical and scientific computing. The library provides a collection of robust, high performance libraries for mathematics, statistics, streams, utilities, and more.
+This package is part of [stdlib][stdlib], a standard library for JavaScript and Node.js, with an emphasis on numerical and scientific computing. The library provides a collection of robust, high performance libraries for mathematics, statistics, streams, utilities, and more.
 
 For more information on the project, filing bug reports and feature requests, and guidance on how to develop [stdlib][stdlib], see the main project [repository][stdlib].
 
@@ -347,17 +322,17 @@ Copyright &copy; 2016-2026. The Stdlib [Authors][stdlib-authors].
 
 [stdlib-license]: https://raw.githubusercontent.com/stdlib-js/ndarray-slice-from/main/LICENSE
 
-[@stdlib/ndarray/ctor]: https://github.com/stdlib-js/ndarray-ctor/tree/esm
+[@stdlib/ndarray/ctor]: https://github.com/stdlib-js/ndarray-ctor
 
 <!-- <related-links> -->
 
-[@stdlib/ndarray/array]: https://github.com/stdlib-js/ndarray-array/tree/esm
+[@stdlib/ndarray/array]: https://github.com/stdlib-js/ndarray-array
 
-[@stdlib/ndarray/slice]: https://github.com/stdlib-js/ndarray-slice/tree/esm
+[@stdlib/ndarray/slice]: https://github.com/stdlib-js/ndarray-slice
 
-[@stdlib/ndarray/slice-dimension-from]: https://github.com/stdlib-js/ndarray-slice-dimension-from/tree/esm
+[@stdlib/ndarray/slice-dimension-from]: https://github.com/stdlib-js/ndarray-slice-dimension-from
 
-[@stdlib/ndarray/slice-to]: https://github.com/stdlib-js/ndarray-slice-to/tree/esm
+[@stdlib/ndarray/slice-to]: https://github.com/stdlib-js/ndarray-slice-to
 
 <!-- </related-links> -->
 
